@@ -29,10 +29,8 @@
 	<header id="header">
 		<div class="inner">
 			<img src="images/avatar.jpg" alt="" class="image avatar" />
-			<h1><strong>Bregas Insan Kharisma</strong>,</h1>
-			<h1>Web Developer</h1>
-			<h1>Based in Tokyo</h1>
-			<h1>Dark mode enthusiast</h1>
+			<h1><strong>Bregas Insan Kharisma | ブレ</strong>,</h1>
+			<h3>Tokyo Based Web Developer</h3>
 		</div>
 	</header>
 
@@ -42,9 +40,19 @@
 		<!-- One -->
 		<section id="one">
 			<header class="major">
-				<h2>Hello there! welcome to my portfolio page</h2>
+				<!-- language selector -->
+				<div class="lang-button float-end">
+					<button class="btn btn-sm border-0">
+						<select id="lang-selector">
+							<option value="en">🇬🇧</option>
+							<option value="jp">🇯🇵</option>
+						</select>
+					</button>
+				</div>
+				<h2 data-i18n="greeting">Hello there! welcome to my portfolio page</h2>
 			</header>
-			<h5>Tech used:</h5>
+				<!-- techlist -->
+			<h5 data-i18n="stack">Tech used:</h5>
 			<ul class="action" style="list-style: none;">
 				<li><i class="fa-brands fa-php"></i> PHP</li>
 				<li><i class="fa-brands fa-laravel"></i> Laravel</li>
@@ -76,7 +84,7 @@
 
 				</article>
 				<article class="col-12-xsmall work-item md">
-					<a href="http://13.239.226.221/" class="image fit thumb"><img src="images/thumbs/02.jpg"
+					<a href="http://13.239.226.221/" class="image fit thumb"><img src="images/thumbs/bank-app.jpg"
 							alt="" /></a>
 					<h3><a href="http://13.239.226.221/">Bank App</a></h3>
 					<p>Yet another dark mode CRUD application, this time hosted on AWS EC2.</p>
@@ -89,14 +97,16 @@
 						permission, site-available, and stuff. but it was a fun experience playing around with infra.
 						remote accessing feels awesome!</p>
 					<br>
-					<p>OS: Ubuntu</p>
+					<p>OS : Ubuntu</p>
 					<p>Webserver : Apache2</p>
 					<p>DB : MySQL</p>
 					<p>framework : Laravel</p>
 					<p>CI : github webhooks</p>
+					<p>Mode : Dark</p>
 					<br>
 					<p><i>DNS not set up, expect to see raw IP</i></p>
-					<p><i>HTTPS port is open but no Encryption yet. you will get a warning if you access using HTTPS</i></p>
+					<p><i>HTTPS port is open but no Encryption yet. you will get a warning if you access using HTTPS</i>
+					</p>
 
 
 				</article>
@@ -108,8 +118,9 @@
 
 		<!-- Three -->
 		<section id="three">
-			<h2>Get In Touch</h2>
-			<p>Please feel free to reach out for collaboration and employment opportunities! <br>
+			<h2 data-i18n="contact_head">Get In Touch</h2>
+			<p data-i18n="closing_remark">Please feel free to reach out for collaboration and employment opportunities!
+				<br>
 				resume available on demand, kindly say hi and put "resume request" in your email subject
 			</p>
 			<div class="col-4 col-12-small">
@@ -442,10 +453,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 								</div>
 							</div> -->
 	</section>
-
 	</section>
-
-
 	</div>
 
 	<!-- Footer -->
@@ -470,6 +478,46 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
 
-</body>
+	<script>
+		const translations = {
+			en: {
+				greeting: "Hello there! welcome to my portfolio page",
+				stack: "Tech used:",
+				contact_head: "Get In Touch",
+				closing_remark: "Please feel free to reach out for collaboration and employment opportunities resume available on demand, kindly say hi and put 'resume request' in your email subject"
+			},
+			jp: {
+				greeting: "ようこそ！ブレのポートフォリオへ",
+				stack: "使用ツール",
+				contact_head: "ご連絡",
+				closing_remark: "ご協業や採用に関するお問い合わせはお気軽にご連絡ください。履歴書・職務経歴書ご希望の場合、メールの件名に「履歴書お願いします」と一言ご記載いただければ結構です！お気軽にとお声がけください~"
+			}
+		};
+	</script>
+
+	<script>
+
+		const selector = document.getElementById('lang-selector');
+
+		function updateLanguage(lang) {
+			document.querySelectorAll('[data-i18n]').forEach(el => {
+				const key = el.getAttribute('data-i18n');
+				el.textContent = translations[lang][key] || el.textContent;
+			});
+		}
+
+		selector.addEventListener('change', (e) => {
+			updateLanguage(e.target.value);
+		});
+
+		const savedLang = localStorage.getItem('lang') || 'en';
+		selector.value = savedLang;
+		updateLanguage(savedLang);
+
+		selector.addEventListener('change', (e) => {
+			localStorage.setItem('lang', e.target.value);
+		});
+	</script>
+</body>J
 
 </html>
