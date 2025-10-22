@@ -2603,11 +2603,11 @@ input, select, textarea {
 		-ms-justify-content: space-between;
 		justify-content: space-between;
 		background-color: #1f1815;
-		background-attachment: scroll,								scroll;
-		background-image: url("images/overlay.png"), url("../../images/bg.jpg");
+		background-attachment: fixed,								scroll;
+		background-image: url("images/overlay.png"), url("../../images/silhouette-2048x2048-15613.jpg");
 		background-position: top left,							top left;
 		background-repeat: repeat,								no-repeat;
-		background-size: auto,								150%;
+		background-size: auto,								175%;
 		color: rgba(255, 255, 255, 0.5);
 		height: 100%;
 		left: 0;
@@ -2639,7 +2639,7 @@ input, select, textarea {
 		}
 
 		#header h2, #header h3, #header h4, #header h5, #header h6 {
-			color: #929292;
+			color: #303030;
 		}
 
 		#header h1 {
@@ -3087,9 +3087,9 @@ input, select, textarea {
 		/* Footer */
 
 			#footer {
-				background-attachment: scroll;
+				background-attachment:fixed;
 				background-color: #1f1815;
-				background-image: url("images/overlay.png"), url("../../images/bg.jpg");
+				background-image: url("images/overlay.png"), url("../../images/silhouette-2048x2048-15613.jpg");
 				background-position: top left,						bottom center;
 				background-repeat: repeat,							no-repeat;
 				background-size: auto,							cover;
@@ -3152,7 +3152,7 @@ input, select, textarea {
 			}
 
 			header.major h2 {
-				font-size: 1.35em;
+				font-size: 1.5em;
 			}
 
 			section h5 {
